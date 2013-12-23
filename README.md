@@ -1,4 +1,5 @@
 # Lightstreamer - "Hello World" Tutorial - Node.js Adapter #
+<!-- START DESCRIPTION xxxxx -->
 
 This article will focus on a Node.js port of the Java Data Adapter illustrated in [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java). 
 
@@ -20,6 +21,8 @@ What does the Proxy Data Adapter do? Basically, it exposes the Data Adapter inte
 But - here is some magic - if your remote Data Adapter is based on Node.js, you can forget about direct socket programming, and leverage a ready-made library that exposes a higher level **JavaScript interface**. So, you will simply have to implement this JavaScript interface.
 
 Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The Node.js library converts from TCP sockets to a JavaScript interface. Clear enough?
+
+<!-- END DESCRIPTION xxxxx -->
 
 ## Creating the JavaScript Data Adapter ##
 
@@ -162,8 +165,11 @@ All the source code described in this article is available in this project.
 # See Also #
 
 ## Clients using this Adapter ##
+<!-- START RELATED_ENTRIES -->
 
 * [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
+
+<!-- END RELATED_ENTRIES -->
 
 ## Related projects ##
 
