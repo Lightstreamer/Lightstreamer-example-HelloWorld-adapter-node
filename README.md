@@ -127,7 +127,7 @@ Create a new file in "Lightstreamer/adapters/ProxyHelloWorld_Node", call it "ada
 </adapters_conf>
 ```
 
-You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called "LiteralBasedProvider") and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "**NODE_HELLOWORLD**".
+You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called [LiteralBasedProvider]((https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java))) and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "**NODE_HELLOWORLD**".
 
 As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "**index.htm**" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
 
@@ -174,7 +174,8 @@ All the source code described in this article is available in this project.
 
 * [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
 * [Lightstreamer - "Hello World" Tutorial - .NET Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet)
+* [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)
 
-# Lightstreamer Compatibility Notes #
+## Lightstreamer Compatibility Notes ##
 
 - Compatible with Lightstreamer Node.js Adapter API version 1 or newer.
