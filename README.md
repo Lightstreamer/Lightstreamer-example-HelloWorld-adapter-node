@@ -120,6 +120,7 @@ Create a new file in "Lightstreamer/adapters/ProxyHelloWorld_Node", call it "ada
  
   <data_provider>
     <adapter_class>com.lightstreamer.adapters.remote.data.RobustNetworkedDataProvider</adapter_class>
+    <classloader>log-enabled</classloader>
     <param name="request_reply_port">6663</param>
     <param name="notify_port">6664</param>
   </data_provider>
