@@ -26,17 +26,15 @@ But - here is some magic - if your remote Data Adapter is based on Node.js, you 
 Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The Node.js library converts from TCP sockets to a JavaScript interface. Clear enough?
 
 You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf).
+You may find more details about how to write Data Adapters and Metadata Adapters for Lightstreamer Server in a Node.js environment in [Lightstreamer SDK for Node Adapters](https://github.com/Weswit/Lightstreamer-lib-node-adapter) and the Node.js Adapter API Reference in [Lightstreamer Node.js Adapter SDK 1.0.1 API](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
 
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-node -->
 
+### Dig the Code
+
 #### The JavaScript Data Adapter
 
-We will write a single helloworld.js file containing all the required JavaScript code. Before we start let's use npm to install the lightstreamer-adapter module
-```
-npm install lightstreamer-adapter
-```
-
-Then open your favorite text editor, create the helloworld.js file and start coding.
+The `helloworld.js` file containing all the required JavaScript code.
 
 First we include the modules we need and setup some configuration variables
 
@@ -103,8 +101,6 @@ The **greetingsThread** function is responsible for generating the real-time eve
 Its code is very simple. We simply call the dataProvider.update method passing in the item name we want to update and a JSON object representing our update containing a message (alternating "Hello" and "World") and the current timestamp. 
 The function then calls itself using setTimeout to wait for a random time between 1 and 3 seconds and generate the next event..
 
-You can now save the code in a simple .js file (let's call it helloworld.js) and the remote Data Adapter is ready.
-
 #### The Adapter Set Configuration
 
 This Adapter Set Name is configured and will be referenced by the clients as `NODE_HELLOWORLD`.
@@ -138,16 +134,16 @@ The full API references for the languages covered in this tutorial are available
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
 * Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
-* Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node/releases) and unzip it into the `deployment` folder.
+* Get the `deploy.zip` file for the Lightstreamer version you have installed from [releases](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node/releases) and unzip it, obtaining the `deployment` folder.
 * Plug the Proxy Data Adapter into the Server: go to the `deployment/Deployment_LS` folder and copy the `ProxyHelloWorld_Node` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
-* Alternatively you may plug the **robust** versions of the Proxy Data Adapter: go to the `deployment/Deployment_LS(robust)` folder and copy the `ProxyHelloWorld_Node` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
+* Alternatively you may plug the *robust* versions of the Proxy Data Adapter: go to the `deployment/Deployment_LS(robust)` folder and copy the `ProxyHelloWorld_Node` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
 * Install the lightstreamer-adapter module. Go to the `deployment/Deployment_Node_Remote_Adapter` folder and launch the command:<BR/>
 `npm install lightstreamer-adapter`<BR/>
 * Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Data Adapter and the Remote Data Adapter.
 * Launch the Node.js Remote Adapter: go to the `deployment/Deployment_Node_Remote_Adapter` folder and launch:<BR/>
 `node helloworld.js`<BR/>
 * Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node#clients-using-this-adapter).
-    * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to NODE_HELLOWORLD when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end deployed under `Lightstreamer/pages/HelloWorld` and replace:<BR/>
+    * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to NODE_HELLOWORLD, when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end, deployed under `Lightstreamer/pages/HelloWorld`, and replace:<BR/>
 `var client = new LightstreamerClient(null," HELLOWORLD");`<BR/>
 with:<BR/>
 `var client = new LightstreamerClient(null,"NODE_HELLOWORLD");;`<BR/>
