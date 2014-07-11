@@ -25,6 +25,8 @@ But - here is some magic - if your remote Data Adapter is based on Node.js, you 
 
 Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The Node.js library converts from TCP sockets to a JavaScript interface. Clear enough?
 
+You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf).
+
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-node -->
 
 #### The JavaScript Data Adapter
@@ -103,8 +105,13 @@ The function then calls itself using setTimeout to wait for a random time betwee
 
 You can now save the code in a simple .js file (let's call it helloworld.js) and the remote Data Adapter is ready.
 
-#### The adapters.xml File
+#### The Adapter Set Configuration
 
+This Adapter Set Name is configured and will be referenced by the clients as `NODE_HELLOWORLD`.
+For this demo we configure just the Data Adapter as a *Proxy Data Adapter*, while instead, as Metadata Adapter, we use the ready-made [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)).
+As *Proxy Data Adapter* you may configure also the robust versions. The *Robust Proxy Data Adapter* has some recovery capabilities and avoid to terminate the Lightstreamer Server process, so it can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. Full details on the recovery behavior of the Robust Data Adapter are available as inline comments within the `DOCS-SDKs/sdk_adapter_remoting_infrastructure/conf/sockets(robust)/adapters.xml` file in your Lightstreamer Server installation.
+
+The `adapters.xml` file for this demo should look like:
 ```xml
 <?xml version="1.0"?>
  
@@ -115,14 +122,17 @@ You can now save the code in a simple .js file (let's call it helloworld.js) and
   </metadata_provider>
  
   <data_provider>
-    <adapter_class>com.lightstreamer.adapters.remote.data.RobustNetworkedDataProvider</adapter_class>
-    <classloader>log-enabled</classloader>
+    <adapter_class>com.lightstreamer.adapters.remote.data.NetworkedDataProvider</adapter_class>
     <param name="request_reply_port">6663</param>
     <param name="notify_port">6664</param>
   </data_provider>
  
 </adapters_conf>
 ```
+
+### Final Notes
+The full API references for the languages covered in this tutorial are available from the links below:
+- [Node.js Adapter API Reference](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html)
 
 
 ## Install
@@ -131,58 +141,37 @@ If you want to install a version of this demo in your local Lightstreamer Server
 * Get the `deploy.zip` file of the [latest release](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node/releases) and unzip it
 * Plug the Proxy Data Adapter into the Server: go to the `Deployment_LS` folder and copy the `ProxyHelloWorld_Node` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
 * Alternatively you may plug the **robust** versions of the Proxy Data Adapter: go to the `Deployment_LS(robust)` folder and copy the `ProxyHelloWorld_Node` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
-
-
-
-You have just deployed a new Java Adapter pair, where the Metadata Adapter is a default one (called [LiteralBasedProvider]((https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java))) and the Data Adapter is the Proxy Adapter (called "RobustNetworkedDataProvider"). This Adapter pair will be referenced by the clients as "**NODE_HELLOWORLD**".
-
-As a final configuration, let's tell our Web client to use this new Adapter pair, rather than those we developed in [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript). So just edit the "**index.htm**" page of the Hello World front-end (we deployed it under "Lightstreamer/pages/HelloWorld) and replace:
-
-```js
-  var client = new LightstreamerClient(null, "HELLOWORLD");
+* Install the lightstreamer-adapter module
 ```
-
-with:
-
-```js
-  var client = new LightstreamerClient(null, "NODE_HELLOWORLD");
-```
-
-## Running the Application ##
-
-Now we have all the pieces ready. Let's enjoy the results.
-
-Start your Lightstreamer Server. When it's up, run the Node.js Remote Adapter.
-
+npm install lightstreamer-adapter
+``` 
+* Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Data Adapter and the Remote Data Adapter.
+* Launch the Node.js Remote Adapter: the `helloworld.js` file can be found in the `Deployment_Node_Remote_Adapter` folder.
 ```
 node helloworld.js
 ```
+* Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node#clients-using-this-adapter).
+    * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to NODE_HELLOWORLD when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end deployed under `Lightstreamer/pages/HelloWorld` and replace:<BR/>
+`var client = new LightstreamerClient(null," HELLOWORLD");`<BR/>
+with:<BR/>
+`var client = new LightstreamerClient(null,"NODE_HELLOWORLD");;`<BR/>
+    * Open a browser window and go to: [http://localhost:8080/HelloWorld/]()
 
-Open a browser window and go to: http://localhost:8080/HelloWorld/
+## See Also
 
-## Final Notes ##
-
-The full API references for the languages covered in this tutorial are available from the links below:
-
-- [Node.js Adapter API Reference](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html)
-
-All the source code described in this article is available in this project.
-
-# See Also #
-
-## Clients Using This Adapter ##
+### Clients Using This Adapter
 <!-- START RELATED_ENTRIES -->
 
 * [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript)
 
 <!-- END RELATED_ENTRIES -->
 
-## Related Projects ##
+### Related Projects
 
 * [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java)
 * [Lightstreamer - "Hello World" Tutorial - .NET Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-dotnet)
 * [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java)
 
-## Lightstreamer Compatibility Notes ##
+## Lightstreamer Compatibility Notes
 
 - Compatible with Lightstreamer Node.js Adapter API version 1 or newer.
