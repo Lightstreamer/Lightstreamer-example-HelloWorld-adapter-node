@@ -24,7 +24,8 @@ But - here is some magic - if your remote Data Adapter is based on Node.js, you 
 Ok, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The Node.js library converts from TCP sockets to a JavaScript interface. Clear enough?
 
 You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf).
-You may find more details about how to write Data Adapters and Metadata Adapters for Lightstreamer Server in a Node.js environment in [Lightstreamer SDK for Node Adapters](https://github.com/Weswit/Lightstreamer-lib-node-adapter) and the Node.js Adapter API Reference in [Lightstreamer Node.js Adapter SDK 1.0.1 API](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
+You may find more details about how to write Data Adapters and Metadata Adapters for Lightstreamer Server in a Node.js environment in [Lightstreamer SDK for Node Adapters](https://github.com/Weswit/Lightstreamer-lib-node-adapter).
+The full Node.js Adapter API Reference covered in this tutorial are available at [Lightstreamer Node.js Adapter SDK 1.0.1 API](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
 
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-node -->
 
@@ -124,11 +125,6 @@ The `adapters.xml` file for this demo should look like:
 </adapters_conf>
 ```
 
-### Final Notes
-The full API references for the languages covered in this tutorial are available at [Node.js Adapter API Reference](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
-
-Please [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
-
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
 * Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
@@ -168,3 +164,8 @@ with:<BR/>
 ## Lightstreamer Compatibility Notes
 
 - Compatible with Lightstreamer Node.js Adapter API version 1 or newer.
+
+## Final Notes
+
+Please [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
+
