@@ -125,9 +125,9 @@ The `adapters.xml` file for this demo should look like:
 ```
 
 ### Final Notes
-The full API references for the languages covered in this tutorial are available from the links below:
-- [Node.js Adapter API Reference](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html)
+The full API references for the languages covered in this tutorial are available at [Node.js Adapter API Reference](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
 
+Please [post to our support forums](http://forums.lightstreamer.com) any feedback or question you might have. Thanks!
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps.
