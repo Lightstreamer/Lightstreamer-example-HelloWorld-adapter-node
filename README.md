@@ -137,10 +137,12 @@ If you want to install a version of this demo in your local Lightstreamer Server
 * Get the `deploy.zip` file for the Lightstreamer version you have installed from [releases](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node/releases) and unzip it, obtaining the `deployment` folder.
 * Plug the Proxy Data Adapter into the Server: go to the `deployment/Deployment_LS` folder and copy the `ProxyHelloWorld_Node` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
 * Alternatively you may plug the *robust* versions of the Proxy Data Adapter: go to the `deployment/Deployment_LS(robust)` folder and copy the `ProxyHelloWorld_Node` directory and all of its files into `adapters`. The robust Proxy Data Adapter can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. 
-* Install the lightstreamer-adapter module. Go to the `deployment/Deployment_Node_Remote_Adapter` folder and launch the command:<BR/>
+* Create a directory where to deploy the Node.js Remote Adapter and let call it `Deployment_Node_Remote_Adapter`.
+* Install the lightstreamer-adapter module. Go to the `Deployment_Node_Remote_Adapter` folder and launch the command:<BR/>
 `npm install lightstreamer-adapter`<BR/>
+* Download the `helloworld.js` file from this project and copy it into the `Deployment_Node_Remote_Adapter` folder.
 * Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Data Adapter and the Remote Data Adapter.
-* Launch the Node.js Remote Adapter: go to the `deployment/Deployment_Node_Remote_Adapter` folder and launch:<BR/>
+* Launch the Node.js Remote Adapter: go to the `Deployment_Node_Remote_Adapter` folder and launch:<BR/>
 `node helloworld.js`<BR/>
 * Test the Adapter, launching the client listed in [Clients Using This Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node#clients-using-this-adapter).
     * In order to make the ["Hello World" Tutorial - HTML Client](https://github.com/Weswit/Lightstreamer-example-HelloWorld-client-javascript) front-end pages get data from the newly installed Adapter Set, you need to modify the front-end pages and set the required Adapter Set name to NODE_HELLOWORLD, when creating the LightstreamerClient instance. So edit the `index.htm` page of the Hello World front-end, deployed under `Lightstreamer/pages/HelloWorld`, and replace:<BR/>
