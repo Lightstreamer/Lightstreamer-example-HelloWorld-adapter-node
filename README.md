@@ -1,7 +1,7 @@
 # Lightstreamer - "Hello World" Tutorial - Node.js Adapter #
 <!-- START DESCRIPTION lightstreamer-example-helloworld-adapter-node -->
 
-The *"Hello World" Tutorial* is a very basic example where we push the alternated strings "Hello" and "World", followed by the current timestamp, from the server to the browser.
+The *"Hello World" Tutorial* is a very basic example, based on [Lightstreamer](http://www.lightstreamer.com/), where we push the alternated strings "Hello" and "World", followed by the current timestamp, from the server to the browser.
 
 This project is a [Node.js](http://nodejs.org/) port of the [Lightstreamer - "Hello World" Tutorial - Java Adapter](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-java), and contains the source code and all the resources needed to install the Node.js Remote Adapters for the *"Hello World" Tutorial*.
 
