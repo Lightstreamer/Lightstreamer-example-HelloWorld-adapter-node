@@ -169,7 +169,7 @@ with:<BR/>
 
 ## Lightstreamer Compatibility Notes
 
-- Compatible with Lightstreamer Node.js Adapter API version 1 or newer.
+- Compatible with Lightstreamer Node.js Adapter API version 1.0 to 1.2.
 
 ## Final Notes
 
