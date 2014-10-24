@@ -27,7 +27,7 @@ But - here is some magic - if your remote Data Adapter is based on Node.js, you 
 
 Okay, let's recap... The Proxy Data Adapter converts from a Java interface to TCP sockets. The Node.js library converts from TCP sockets to a JavaScript interface. Clear enough?
 
-You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_adapter_remoting_infrastructure/doc/ARI%20Protocol.pdf).
+You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](http://www.lightstreamer.com/docs/ARI_base/ARI%20Protocol.pdf).
 You may find more details about how to write Data Adapters and Metadata Adapters for Lightstreamer Server in a Node.js environment in [Lightstreamer SDK for Node Adapters](https://github.com/Weswit/Lightstreamer-lib-node-adapter).
 The full Node.js Adapter API Reference covered in this tutorial are available at [Lightstreamer Node.js Adapter SDK 1.0.1 API](http://www.lightstreamer.com/docs/adapter_nodejs_api/index.html).
 
@@ -107,8 +107,8 @@ The function then calls itself using setTimeout to wait for a random time betwee
 #### The Adapter Set Configuration
 
 This Adapter Set is configured and will be referenced by the clients as `NODE_HELLOWORLD`.
-For this demo, we configure just the Data Adapter as a *Proxy Data Adapter*, while instead, as Metadata Adapter, we use the ready-made [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java).
-As *Proxy Data Adapter*, you may configure also the robust versions. The *Robust Proxy Data Adapter* has some recovery capabilities and avoid to terminate the Lightstreamer Server process, so it can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. Full details on the recovery behavior of the Robust Data Adapter are available as inline comments within the `DOCS-SDKs/sdk_adapter_remoting_infrastructure/conf/sockets(robust)/adapters.xml` file in your Lightstreamer Server installation.
+For this demo, we configure just the Data Adapter as a *Proxy Data Adapter*, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
+As *Proxy Data Adapter*, you may configure also the robust versions. The *Robust Proxy Data Adapter* has some recovery capabilities and avoid to terminate the Lightstreamer Server process, so it can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. Full details on the recovery behavior of the Robust Data Adapter are available as inline comments within the `DOCS-SDKs/adapter_remoting_infrastructure/doc/adapter_robust_conf_template/adapters.xml` file in your Lightstreamer Server installation.
 
 The `adapters.xml` file for this demo should look like:
 ```xml
@@ -121,7 +121,7 @@ The `adapters.xml` file for this demo should look like:
   </metadata_provider>
  
   <data_provider>
-    <adapter_class>com.lightstreamer.adapters.remote.data.NetworkedDataProvider</adapter_class>
+    <adapter_class>PROXY_FOR_REMOTE_ADAPTER</adapter_class>
     <param name="request_reply_port">6663</param>
     <param name="notify_port">6664</param>
   </data_provider>
@@ -169,7 +169,8 @@ with:<BR/>
 
 ## Lightstreamer Compatibility Notes
 
-- Compatible with Lightstreamer Node.js Adapter API version 1.0 to 1.2.
+* Compatible with Lightstreamer SDK for Node.js Adapters since 1.3
+- For a version of this example compatible with Lightstreamer SDK for Node.js Adapters version 1.0, please refer to [this tag](https://github.com/Weswit/Lightstreamer-example-HelloWorld-adapter-node/tree/for_Lightstreamer_5.1).
 
 ## Final Notes
 
