@@ -130,7 +130,8 @@ The `adapters.xml` file for this demo should look like:
 ```
 
 <i>NOTE: not all configuration options of a Proxy Adapter are exposed by the file suggested above.<br>
-You can easily expand your configurations using the generic template, `DOCS-SDKs/adapter_remoting_infrastructure/doc/adapter_conf_template/adapters.xml` or `DOCS-SDKs/adapter_remoting_infrastructure/doc/adapter_robust_conf_template/adapters.xml`, as a reference.</i>
+You can easily expand your configurations using the generic template
+for [basic](https://lightstreamer.com/docs/ls-ARI/latest/adapter_conf_template/adapters.xml) and [robust](https://lightstreamer.com/docs/ls-ARI/latest/adapter_robust_conf_template/adapters.xml) Proxy Adapters as a reference.</i>
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps:
