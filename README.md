@@ -29,7 +29,7 @@ Okay, let's recap... The Proxy Data Adapter converts from a Java interface to TC
 
 You may find more details about ARI in [Adapter Remoting Infrastructure Network Protocol Specification](https://lightstreamer.com/api/ls-generic-adapter/latest/ARI%20Protocol.pdf).
 You may find more details about how to write Data Adapters and Metadata Adapters for Lightstreamer Server in a Node.js environment in [Lightstreamer SDK for Node Adapters](https://github.com/Lightstreamer/Lightstreamer-lib-node-adapter).
-The full Node.js Adapter API Reference covered in this tutorial are available at [Lightstreamer Node.js Adapter SDK API](http://docs.lightstreamer.com/api/ls-nodejs-adapter/latest/).
+The full Node.js Adapter API Reference covered in this tutorial are available at [Lightstreamer Node.js Adapter SDK API](https://www.lightstreamer.com/api/ls-nodejs-adapter/latest/).
 
 <!-- END DESCRIPTION lightstreamer-example-helloworld-adapter-node -->
 
