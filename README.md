@@ -107,7 +107,7 @@ The function then calls itself using setTimeout to wait for a random time betwee
 #### The Adapter Set Configuration
 
 This Adapter Set is configured and will be referenced by the clients as `NODE_HELLOWORLD`.
-For this demo, we configure just the Data Adapter as a *Proxy Data Adapter*, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Lightstreamer/Lightstreamer-example-ReusableMetadata-adapter-java), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
+For this demo, we configure just the Data Adapter as a *Proxy Data Adapter*, while instead, as Metadata Adapter, we use the [LiteralBasedProvider](https://github.com/Lightstreamer/Lightstreamer-lib-adapter-java-inprocess#literalbasedprovider-metadata-adapter), a simple full implementation of a Metadata Adapter, already provided by Lightstreamer server.
 As *Proxy Data Adapter*, you may configure also the robust versions. The *Robust Proxy Data Adapter* has some recovery capabilities and avoid to terminate the Lightstreamer Server process, so it can handle the case in which a Remote Data Adapter is missing or fails, by suspending the data flow and trying to connect to a new Remote Data Adapter instance. Full details on the recovery behavior of the Robust Data Adapter are available as inline comments within the [provided template](https://lightstreamer.com/docs/ls-ARI/latest/adapter_robust_conf_template/adapters.xml).
 
 The `adapters.xml` file for this demo should look like:
@@ -135,7 +135,7 @@ for [basic](https://lightstreamer.com/docs/ls-ARI/latest/adapter_conf_template/a
 
 ## Install
 If you want to install a version of this demo in your local Lightstreamer Server, follow these steps:
-* Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](http://www.lightstreamer.com/download.htm), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
+* Download *Lightstreamer Server* (Lightstreamer Server comes with a free non-expiring demo license for 20 connected users) from [Lightstreamer Download page](https://lightstreamer.com/download/), and install it, as explained in the `GETTING_STARTED.TXT` file in the installation home directory.
 * Get the `deploy.zip` file for the Lightstreamer version you have installed from [releases](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-node/releases) and unzip it, obtaining the `deployment` folder.
 * Plug the Proxy Data Adapter into the Server: go to the `deployment/Deployment_LS` folder and copy the `NodeHelloWorld` directory and all of its files to the `adapters` folder of your Lightstreamer Server installation.
 * Alternatively, you may plug the *robust* versions of the Proxy Data Adapter: go to the `deployment/Deployment_LS(robust)` folder and copy the `NodeHelloWorld` directory and all of its files into the `adapters` folder.
@@ -168,7 +168,7 @@ with:<BR/>
 ### Related Projects
 
 * [Complete list of "Hello World" Adapter implementations with other technologies](https://github.com/Lightstreamer?utf8=%E2%9C%93&q=Lightstreamer-example-HelloWorld-adapter&type=&language=)
-* [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Lightstreamer/Lightstreamer-example-ReusableMetadata-adapter-java)
+* [Lightstreamer - Reusable Metadata Adapters - Java Adapter](https://github.com/Lightstreamer/Lightstreamer-lib-adapter-java-inprocess#literalbasedprovider-metadata-adapter)
 
 ## Lightstreamer Compatibility Notes
 
