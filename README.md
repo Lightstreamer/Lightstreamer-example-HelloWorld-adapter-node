@@ -50,7 +50,9 @@ var REQ_RESP_PORT = 6663;
 var WRITE_PORT = 6664;
 ```
 
-Then, we create two streams that will be used by our DataProvider to communicate with the Proxy Data Adapter. We use the standard net module to do so:
+Then, we create two streams that will be used by our DataProvider to communicate with the Proxy Data Adapter.
+In fact, the use of two ports to communicate with a Data Adapter is required for Servers earlier than 7.4, then it is supported for backward compatibility.
+We use the standard net module to do so:
 ```js
 var reqRespStream = net.createConnection(REQ_RESP_PORT, HOST);
 var notifyStream = net.createConnection(WRITE_PORT, HOST);
