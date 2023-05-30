@@ -9,7 +9,7 @@ As an example of [Clients Using This Adapter](#clients-using-this-adapter), you 
 
 ## Detail
 
-First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with a JavaScript equivalent. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling, provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use Flex, instead of HTML, on the client side. Or, we could use the Node.js Adapter on the server side and use Java, instead of HMTL or Flex, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
+First, please take a look at the previous installment [Lightstreamer - "Hello World" Tutorial - HTML Client](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-client-javascript), which provides some background and the general description of the application. Notice that the front-end will be exactly the same. We created a very simple HTML page that subscribes to the "greetings" item, using the "HELLOWORLD" Adapter. Now, we will replace the "HELLOWORLD" Adapter implementation based on Java with a JavaScript equivalent. On the client side, nothing will change, as server-side Adapters can be transparently switched and changed, as long as they respect the same interfaces. Thanks to this decoupling, provided by Lightstreamer Server, we could even do something different. For example, we could keep the Java Adapter on the server side and use node.js, instead of HTML, on the client side. Or, we could use the Node.js Adapter on the server side and use Java, instead of HMTL or node.js, on the client side. Basically, all the combinations of languages and technologies on the client side and on the server side are supported.
 
 This project shows the use of DataProvider and MetadataProvider classes provided in the [Lightstreamer SDK for Node Adapters](https://github.com/Lightstreamer/Lightstreamer-lib-node-adapter).
 
@@ -46,19 +46,17 @@ var DataProvider = require('lightstreamer-adapter').DataProvider;
 var net = require('net');
 
 var HOST = 'localhost';
-var REQ_RESP_PORT = 6663;
-var WRITE_PORT = 6664;
+var PORT = 6663;
 ```
 
-Then, we create two streams that will be used by our DataProvider to communicate with the Proxy Data Adapter. We use the standard net module to do so:
+Then, we create a stream that will be used by our DataProvider to communicate with the Proxy Data Adapter. We use the standard net module to do so:
 ```js
-var reqRespStream = net.createConnection(REQ_RESP_PORT, HOST);
-var notifyStream = net.createConnection(WRITE_PORT, HOST);
+var stream = net.createConnection(PORT, HOST);
 ```
 
 Finally, we create our DataProvider instance.
 ```js
-var dataProvider = new DataProvider(reqRespStream, notifyStream);
+var dataProvider = new DataProvider(stream);
 ```
 
 At this point, the application is kind of ready-ish. It doesn't do anything but "it works".
@@ -123,7 +121,6 @@ The `adapters.xml` file for this demo should look like:
   <data_provider>
     <adapter_class>PROXY_FOR_REMOTE_ADAPTER</adapter_class>
     <param name="request_reply_port">6663</param>
-    <param name="notify_port">6664</param>
   </data_provider>
  
 </adapters_conf>
@@ -172,7 +169,9 @@ with:<BR/>
 
 ## Lightstreamer Compatibility Notes
 
-* Compatible with Lightstreamer SDK for Node.js Adapters since 1.7
+* Compatible with Lightstreamer SDK for Node.js Adapters version 1.7 or newer and Lightstreamer Server version 7.4 or newer.
+- For a version of this example compatible with Lightstreamer Server version since 6.0, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-node/tree/for_Lightstreamer_7.3).
+- For a version of this example compatible with Lightstreamer SDK for Node.js Adapters version 1.3 to 1.6, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-node/tree/for_Lightstreamer_7.3).
 - For a version of this example compatible with Lightstreamer SDK for Node.js Adapters version 1.0, please refer to [this tag](https://github.com/Lightstreamer/Lightstreamer-example-HelloWorld-adapter-node/tree/for_Lightstreamer_5.1).
 
 ## Final Notes

@@ -17,13 +17,11 @@ var DataProvider = require('lightstreamer-adapter').DataProvider;
 var net = require('net');
 
 var HOST = 'localhost';
-var REQ_RESP_PORT = 6663;
-var WRITE_PORT = 6664;
+var PORT = 6663;
 
-var reqRespStream = net.createConnection(REQ_RESP_PORT, HOST);
-var notifyStream = net.createConnection(WRITE_PORT, HOST);
+var stream = net.createConnection(PORT, HOST);
 
-var dataProvider = new DataProvider(reqRespStream, notifyStream);
+var dataProvider = new DataProvider(stream);
 
 var greetingsThread;
 
