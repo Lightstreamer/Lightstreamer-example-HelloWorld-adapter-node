@@ -37,6 +37,6 @@
   ],
   
   "dependencies": {
-    "lightstreamer-adapter": ">=1.0.0"
+    "lightstreamer-adapter": "~1.6.0"
   }
 }

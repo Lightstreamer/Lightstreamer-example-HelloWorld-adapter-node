@@ -142,7 +142,7 @@ If you want to install a version of this demo in your local Lightstreamer Server
 * Install the lightstreamer-adapter module. 
     * Create a directory where to deploy the Node.js Remote Adapter and let call it `Deployment_Node_Remote_Adapter`.
     * Go to the `Deployment_Node_Remote_Adapter` folder and launch the command:<BR/>
-    `> npm install lightstreamer-adapter`<BR/>
+    `> npm install lightstreamer-adapter@1.6.0`<BR/>
     * Download the `helloworld.js` file from this project and copy it into the `Deployment_Node_Remote_Adapter` folder.
 * Launch Lightstreamer Server. The Server startup will complete only after a successful connection between the Proxy Data Adapter and the Remote Data Adapter.
 * Launch the Node.js Remote Adapter: go to the `Deployment_Node_Remote_Adapter` folder and launch:<BR/>
