@@ -27,16 +27,20 @@
     "name" : "Lightstreamer Srl",
     "email" : "support@lightstreamer.com"
   },
-  
-  "files": ["README.md","helloworld.js"],  
-  
-  "main": "helloworld",
     
-  "engines": [
-    "node"
-  ],
-  
+  "main": "helloworld.cjs",
+  "type": "commonjs",
+
+  "engines": {
+    "node": "*"
+  },
+
   "dependencies": {
-    "lightstreamer-adapter": "^1.7.0"
+    "lightstreamer-adapter": "^1.8.0"
+  },
+
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.2"
   }
 }
